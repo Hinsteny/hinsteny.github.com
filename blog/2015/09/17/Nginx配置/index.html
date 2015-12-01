@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel = "Shortcut Icon" href=/favicon.ico>
+  
+  <title>Nginx基本配置详情 | 浅雪夕阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="study">
+  
+
+  <meta name="description" content="Nginx (“engine x”) 是一个高性能的 HTTP 和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 服务器。同时是一个很强大的高性能Web和反向代理服务器，具有很多非常优越的特性:
+Nginx特性介绍Nginx作为负载均衡服务器Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP代理服务器对外进行服务。Nginx采用C进行编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx基本配置详情">
+<meta property="og:url" content="http://hinsteny.github.com/blog/2015/09/17/Nginx配置/index.html">
+<meta property="og:site_name" content="浅雪夕阳">
+<meta property="og:description" content="Nginx (“engine x”) 是一个高性能的 HTTP 和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 服务器。同时是一个很强大的高性能Web和反向代理服务器，具有很多非常优越的特性:
+Nginx特性介绍Nginx作为负载均衡服务器Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP代理服务器对外进行服务。Nginx采用C进行编">
+<meta property="og:updated_time" content="2015-12-01T09:47:02.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx基本配置详情">
+<meta name="twitter:description" content="Nginx (“engine x”) 是一个高性能的 HTTP 和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 服务器。同时是一个很强大的高性能Web和反向代理服务器，具有很多非常优越的特性:
+Nginx特性介绍Nginx作为负载均衡服务器Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP代理服务器对外进行服务。Nginx采用C进行编">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/blog/css/style.css" type="text/css">
+  
+    <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/blog/scrollLoading/style.css" type="text/css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/font-awesome/css/font-awesome.min.css" type="text/css">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="https://github.com/Hinsteny" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">蓝色许愿沙，红叶舞秋山</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/">Home</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/archives/">Archive</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/life/">Life</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/">Love</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/">Story</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/blog/about/index.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                
+                  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://hinsteny.github.com/blog"></form>
+                
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/blog/categories/study/">study</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Nginx配置" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Nginx基本配置详情
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/blog/2015/09/17/Nginx配置/" class="article-date">
+  <time datetime="2015-09-17T08:03:56.000Z" itemprop="datePublished">2015-09-17</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>Nginx (“engine x”) 是一个高性能的 HTTP 和 反向代理 服务器，也是一个 IMAP/POP3/SMTP 服务器。同时是一个很强大的高性能Web和反向代理服务器，具有很多非常优越的特性:</p>
+<h2 id="Nginx特性介绍">Nginx特性介绍</h2><h3 id="Nginx作为负载均衡服务器">Nginx作为负载均衡服务器</h3><p>Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP代理服务器对外进行服务。Nginx采用C进行编写，不论是系统资源开销还是CPU使用效率都比 Perlbal 要好很多。</p>
+<h3 id="代码">代码</h3><p>Nginx代码完全用C语言从头写成，已经移植到许多体系结构和操作系统，包括：Linux、FreeBSD、Solaris、Mac OS X、AIX以及Microsoft Windows。Nginx有自己的函数库，并且除了zlib、PCRE和OpenSSL之外，标准模块只使用系统C库函数。而且，如果不需要或者考虑到潜在的授权冲突，可以不使用这些第三方库。</p>
+<h3 id="代理服务器">代理服务器</h3><p>Nginx 是一个安装非常的简单、配置文件非常简洁（还能够支持perl语法）、Bugs非常少的服务器。Nginx 启动特别容易，并且几乎可以做到7*24不间断运行，即使运行数个月也不需要重新启动。你还能够不间断服务的情况下进行软件版本的升级。</p>
+<h2 id="Nginx功能介绍">Nginx功能介绍</h2><h3 id="结构与扩展">结构与扩展</h3><p>一个主进程和多个工作进程。工作进程是单线程的，且不需要特殊授权即可运行；</p>
+<h3 id="HTTP基础功能">HTTP基础功能</h3><p>处理静态文件，索引文件以及自动索引；<br>反向代理加速（无缓存），简单的负载均衡和容错；<br>FastCGI，简单的负载均衡和容错；<br>模块化的结构。过滤器包括gzipping,byte ranges,chunked responses，以及 SSI-filter。在SSI过滤器中，到同一个 proxy 或者 FastCGI 的多个子请求并发处理；<br>SSL 和 TLS SNI 支持；</p>
+<h2 id="Nginx配置">Nginx配置</h2><h3 id="配置详解">配置详解</h3><hr>
+<pre><code><span class="comment">#运行用户</span>
+<span class="title">user</span> nobody;
+<span class="comment">#启动进程,通常设置成和cpu的数量相等</span>
+<span class="title">worker_processes</span>  <span class="number">1</span>;
+
+<span class="comment">#全局错误日志及PID文件</span>
+<span class="comment">#error_log  logs/error.log;</span>
+<span class="comment">#error_log  logs/error.log  notice;</span>
+<span class="comment">#error_log  logs/error.log  info;</span>
+
+<span class="comment">#pid        logs/nginx.pid;</span>
+
+<span class="comment">#工作模式及连接数上限</span>
+<span class="title">events</span> {
+<span class="comment">#epoll是多路复用IO(I/O Multiplexing)中的一种方式,</span>
+<span class="comment">#仅用于linux2.6以上内核,可以大大提高nginx的性能</span>
+<span class="title">use</span>   <span class="built_in">epoll</span>; 
+
+<span class="comment">#单个后台worker process进程的最大并发链接数    </span>
+<span class="title">worker_connections</span>  <span class="number">1024</span>;
+
+<span class="comment"># 并发总数是 worker_processes 和 worker_connections 的乘积</span>
+<span class="comment"># 即 max_clients = worker_processes * worker_connections</span>
+<span class="comment"># 在设置了反向代理的情况下，max_clients = worker_processes * worker_connections / 4  为什么</span>
+<span class="comment"># 为什么上面反向代理要除以4，应该说是一个经验值</span>
+<span class="comment"># 根据以上条件，正常情况下的Nginx Server可以应付的最大连接数为：4 * 8000 = 32000</span>
+<span class="comment"># worker_connections 值的设置跟物理内存大小有关</span>
+<span class="comment"># 因为并发受IO约束，max_clients的值须小于系统可以打开的最大文件数</span>
+<span class="comment"># 而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右</span>
+<span class="comment"># 我们来看看360M内存的VPS可以打开的文件句柄数是多少：</span>
+<span class="comment"># $ cat /proc/sys/fs/file-max</span>
+<span class="comment"># 输出 34336</span>
+<span class="comment"># 32000 &lt; 34336，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内</span>
+ <span class="comment"># 所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置</span>
+ <span class="comment"># 使得并发总数小于操作系统可以打开的最大文件数目</span>
+ <span class="comment"># 其实质也就是根据主机的物理CPU和内存进行配置</span>
+ <span class="comment"># 当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。</span>
+ <span class="comment"># ulimit -SHn 65535</span>
+
+}
+
+
+<span class="title">http</span> {
+ <span class="comment">#设定mime类型,类型由mime.type文件定义</span>
+ <span class="title">include</span>    mime.types;
+ <span class="title">default_type</span>  application/octet-stream;
+ <span class="comment">#设定日志格式</span>
+ <span class="title">log_format</span>  main  <span class="string">'<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] "<span class="variable">$request</span>" '</span>
+                   <span class="string">'<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> "<span class="variable">$http_referer</span>" '</span>
+                   <span class="string">'"<span class="variable">$http_user_agent</span>" "<span class="variable">$http_x_forwarded_for</span>"'</span>;
+
+ <span class="title">access_log</span>  logs/access.log  main;
+
+ <span class="comment">#sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，</span>
+ <span class="comment">#对于普通应用，必须设为 on,</span>
+ <span class="comment">#如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，</span>
+ <span class="comment">#以平衡磁盘与网络I/O处理速度，降低系统的uptime.</span>
+ <span class="title">sendfile</span>     <span class="built_in">on</span>;
+ <span class="comment">#tcp_nopush     on;</span>
+
+ <span class="comment">#连接超时时间</span>
+ <span class="comment">#keepalive_timeout  0;</span>
+ <span class="title">keepalive_timeout</span>  <span class="number">65</span>;
+ <span class="title">tcp_nodelay</span>     <span class="built_in">on</span>;
+
+ <span class="comment">#开启gzip压缩</span>
+ <span class="title">gzip</span>  <span class="built_in">on</span>;
+ <span class="title">gzip_disable</span> <span class="string">"MSIE [1-6]."</span>;
+
+ <span class="comment">#设定请求缓冲</span>
+ <span class="title">client_header_buffer_size</span>    <span class="number">128k</span>;
+ <span class="title">large_client_header_buffers</span>  <span class="number">4</span> <span class="number">128k</span>;
+
+
+ <span class="comment">#设定虚拟主机配置</span>
+ <span class="title">server</span> {
+     <span class="comment">#侦听80端口</span>
+     <span class="title">listen</span>    <span class="number">80</span>;
+     <span class="comment">#定义使用 www.nginx.cn访问</span>
+     <span class="title">server_name</span>  www.nginx.cn;
+
+     <span class="comment">#定义服务器的默认网站根目录位置</span>
+     <span class="title">root</span> html;
+
+     <span class="comment">#设定本虚拟主机的访问日志</span>
+     <span class="title">access_log</span>  logs/nginx.access.log  main;
+
+     <span class="comment">#默认请求</span>
+     <span class="title">location</span> / {
+
+         <span class="comment">#定义首页索引文件的名称</span>
+         <span class="title">index</span> index.php index.html index.htm;   
+
+     }
+
+     <span class="comment"># 定义错误提示页面</span>
+     <span class="title">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;
+     <span class="title">location</span> = /50x.html {
+     }
+
+     <span class="comment">#静态文件，nginx自己处理</span>
+     <span class="title">location</span> <span class="regexp">~ ^/(images|javascript|js|css|flash|media|static)/</span> {
+
+         <span class="comment">#过期30天，静态文件不怎么更新，过期可以设大一点，</span>
+         <span class="comment">#如果频繁更新，则可以设置得小一点。</span>
+         <span class="title">expires</span> <span class="number">30d</span>;
+     }
+
+     <span class="comment">#PHP 脚本请求全部转发到 FastCGI处理. 使用FastCGI默认配置.</span>
+     <span class="title">location</span> <span class="regexp">~ .php$</span> {
+         <span class="title">fastcgi_pass</span> <span class="number">127.0.0.1:9000</span>;
+         <span class="title">fastcgi_index</span> index.php;
+         <span class="title">fastcgi_param</span>  SCRIPT_FILENAME  <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;
+         <span class="title">include</span> fastcgi_params;
+     }
+
+     <span class="comment">#禁止访问 .htxxx 文件</span>
+         <span class="title">location</span> <span class="regexp">~ /.ht</span> {
+         <span class="title">deny</span> all;
+     }
+
+ }
+}
+</code></pre><hr>
+<h3 id="一个简单的配置示例">一个简单的配置示例</h3><hr>
+<pre><code>#
+worker_processes  4<span class="comment">;</span>
+
+error_log  logs/error.log<span class="comment">;</span>
+#error_log  logs/error.log  notice<span class="comment">;</span>
+#error_log  logs/error.log  info<span class="comment">;</span>
+
+#pid        logs/nginx.pid<span class="comment">;</span>
+
+
+events {
+    worker_connections  1024<span class="comment">;</span>
+}
+
+
+http {
+    include       mime.types<span class="comment">;</span>
+    default_type  application/octet-stream<span class="comment">;</span>
+    server_names_hash_bucket_size  128<span class="comment">;</span>
+    #limit_req_zone $binary_remote_addr zone=one:1m rate=1r/m<span class="comment">;</span>
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"'<span class="comment">;</span>
+
+    #access_log  logs/access.log  main<span class="comment">;</span>
+
+    sendfile        on<span class="comment">;</span>
+    #tcp_nopush     on<span class="comment">;</span>
+
+    #连接超时时间
+    #keepalive_timeout  0<span class="comment">;</span>
+    keepalive_timeout  65<span class="comment">;</span>
+    tcp_nodelay        on<span class="comment">;</span>
+
+    #开启gzip压缩
+    gzip  on<span class="comment">;</span>
+    gzip_disable "MSIE [1-6]\.(?!.*SV1)"<span class="comment">;</span>
+
+    proxy_cache_path /usr/share/nginx/proxy_caches levels=1:2 keys_zone=proxy_cache_zone:200m inactive=1d max_size=10g<span class="comment">;</span>
+
+    server {
+        listen       8086<span class="comment">;</span>
+        server_name  localhost<span class="comment">;</span>
+
+        #access_log  logs/host.access.log  main<span class="comment">;</span>
+
+        location ~* \.(gif|jpg|png)$ {
+            root /usr/local/nginx_server/images<span class="comment">;</span>
+            #设置过期时间, day
+            expires 7d<span class="comment">;</span>
+        }
+
+        location / {
+        }
+
+        #error_page  404              /404.html<span class="comment">;</span>
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   <span class="number">500 502</span> <span class="number">503 504</span>  /50x.html<span class="comment">;</span>
+        location = /50x.html {
+            root   html<span class="comment">;</span>
+        }
+
+    }
+
+    upstream hinsteny.com {
+        ip_hash<span class="comment">;</span>
+        server <span class="number">127.0.0.1</span>:8005<span class="comment">;</span>
+        server <span class="number">127.0.0.1</span>:8006<span class="comment">;</span>
+    }
+
+
+    server {
+        listen 80<span class="comment">;</span>
+        server_name www.hinsteny.com, www.hisoka.com<span class="comment">;</span>
+
+    #    location ~* {
+    #          root    html<span class="comment">;</span>
+    #          index   maintain.html<span class="comment">;</span>
+    #    }
+
+        proxy_redirect off<span class="comment">;</span>
+        proxy_set_header Host $host<span class="comment">;</span>
+        proxy_set_header X-Real-IP $remote_addr<span class="comment">;</span>
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for<span class="comment">;</span>
+        proxy_max_temp_file_size 0<span class="comment">;</span>
+        client_max_body_size 10m<span class="comment">;</span>
+        client_body_buffer_size 128k<span class="comment">;</span>
+        proxy_connect_timeout 90<span class="comment">;</span>
+        proxy_send_timeout 90<span class="comment">;</span>
+        proxy_read_timeout 90<span class="comment">;</span>
+        proxy_buffer_size 4k<span class="comment">;</span>
+        proxy_buffers 4 32k<span class="comment">;</span>
+        proxy_busy_buffers_size 64k<span class="comment">;</span>
+        proxy_temp_file_write_size 64k<span class="comment">;</span>
+
+        location ~*/html/share/\w+\.html$ {
+            root /usr/local/nginx_server<span class="comment">;</span>
+                expires 1h<span class="comment">;</span>
+        }
+
+        location ~* \.(gif|jpg|png|js|css|html|htm)$ {
+            root /usr/local/tomcat_8005/webapps/ROOT<span class="comment">;</span>
+            expires 1h<span class="comment">;</span>
+        }
+
+    #    location =/{
+    #       proxy_pass http://www.hinsteny.com<span class="comment">;</span>
+            #proxy_cache proxy_cache_zone<span class="comment">;</span>
+            #proxy_cache_valid  <span class="number">200 304 30</span>2 24h<span class="comment">;</span>
+    #       expires 3m<span class="comment">;</span>
+    #    }
+
+    #    location ~*/(product(/\w+/detail)?|flow|content|help)$ {
+    #        proxy_pass http://www.hinsteny.com<span class="comment">;</span>
+            #proxy_cache proxy_cache_zone<span class="comment">;</span>
+            #proxy_cache_valid  <span class="number">200 304 30</span>2 24h<span class="comment">;</span>
+    #       expires 1m<span class="comment">;</span>
+    #    }
+
+        location / {
+            proxy_pass http://www.hinsteny.com<span class="comment">;</span>
+        }
+    }
+
+    server {
+        listen 80<span class="comment">;</span>
+        server_name www.hinsteny.com<span class="comment">;</span>
+
+        location / {
+            proxy_pass http://localhost:8005/<span class="comment">;</span>
+            proxy_redirect off<span class="comment">;</span>
+            proxy_set_header Host $host<span class="comment">;</span>
+            proxy_set_header X-Real-IP $remote_addr<span class="comment">;</span>
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for<span class="comment">;</span>
+            proxy_max_temp_file_size 0<span class="comment">;</span>
+            client_max_body_size 10m<span class="comment">;</span>
+            client_body_buffer_size 128k<span class="comment">;</span>
+            proxy_connect_timeout 90<span class="comment">;</span>
+            proxy_send_timeout 90<span class="comment">;</span>
+            proxy_read_timeout 90<span class="comment">;</span>
+            proxy_buffer_size 4k<span class="comment">;</span>
+            proxy_buffers 4 32k<span class="comment">;</span>
+            proxy_busy_buffers_size 64k<span class="comment">;</span>
+            proxy_temp_file_write_size 64k<span class="comment">;</span>
+        }
+    }
+}
+</code></pre><hr>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://hinsteny.github.com/blog/2015/09/17/Nginx配置/" data-id="cihn8tyqi000lxc8jmuiiyoe4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/study/">study</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/Hinsteny" target="_blank"><i class="icon fa fa-github"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/3900792919/profile" target="_blank"><i class="icon fa fa-weibo"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/Hinsteny" target="_blank"><i class="icon fa fa-twitter"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google-plus" href="/" target="_blank"><i class="icon fa fa-google-plus"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2015/12/01/没有人，没有一种善举，会渺小到无法改变世界。/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          没有人，没有一种善举，会渺小到无法改变世界。
+        
+      </p>
+      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/blog/2015/08/28/Spring-invoke-requset/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Spring_invoke_requset</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recents</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/blog/2015/12/01/没有人，没有一种善举，会渺小到无法改变世界。/" class="thumbnail">
+  
+    <span style="background-image:url(/blog/resource/images/loves/HaileyFord/430f889649b21dc.png
+)" alt="没有人，没有一种善举，会渺小到无法改变世界。" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/blog/categories/love/">love</a></p>
+              <p class="item-title"><a href="/blog/2015/12/01/没有人，没有一种善举，会渺小到无法改变世界。/" class="title">没有人，没有一种善举，会渺小到无法改变世界。</a></p>
+              <p class="item-date"><time datetime="2015-12-01T10:57:02.000Z" itemprop="datePublished">2015-12-01</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/blog/2015/09/17/Nginx配置/" class="thumbnail">
+  
+    <span style="background-image:url(/blog/resource/images/folder/big_folder.jpg)" alt="Nginx基本配置详情" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/blog/categories/study/">study</a></p>
+              <p class="item-title"><a href="/blog/2015/09/17/Nginx配置/" class="title">Nginx基本配置详情</a></p>
+              <p class="item-date"><time datetime="2015-09-17T08:03:56.000Z" itemprop="datePublished">2015-09-17</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/blog/2015/08/28/Spring-invoke-requset/" class="thumbnail">
+  
+    <span style="background-image:url(/blog/resource/images/folder/big_folder.jpg)" alt="Spring_invoke_requset" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/blog/categories/study/">study</a></p>
+              <p class="item-title"><a href="/blog/2015/08/28/Spring-invoke-requset/" class="title">Spring_invoke_requset</a></p>
+              <p class="item-date"><time datetime="2015-08-28T08:09:59.000Z" itemprop="datePublished">2015-08-28</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/blog/2015/08/28/Commond-git/" class="thumbnail">
+  
+    <span style="background-image:url(/blog/resource/images/folder/big_folder.jpg)" alt="Commond_git" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/blog/categories/study/">study</a></p>
+              <p class="item-title"><a href="/blog/2015/08/28/Commond-git/" class="title">Commond_git</a></p>
+              <p class="item-date"><time datetime="2015-08-28T08:03:56.000Z" itemprop="datePublished">2015-08-28</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/blog/2015/07/12/postgres-fdw/" class="thumbnail">
+  
+    <span style="background-image:url(/blog/resource/images/folder/big_folder.jpg)" alt="postgres_fdw" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/blog/categories/study/">study</a></p>
+              <p class="item-title"><a href="/blog/2015/07/12/postgres-fdw/" class="title">postgres_fdw</a></p>
+              <p class="item-date"><time datetime="2015-07-12T12:46:23.000Z" itemprop="datePublished">2015-07-12</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/love/">love</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/study/">study</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/love/">love</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/study/">study</a><span class="tag-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="https://github.com/Hinsteny">Github</a>
+          </li>
+        
+          <li>
+            <a href="https://twitter.com/Hinsteny">Twitter</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2015 Hinsteny Hisoka</p>
+        <p>Powered by <a href="https://github.com/Hinsteny" target="_blank">Hinsteny Hisoka</a>.  <span style="margin-left: 10px; color: #EEEEEE;">Life is full of surprise !</span></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/blog/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+  <script src="/blog/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+  <script src="/blog/scrollLoading/main.js" type="text/javascript"></script>
+
+
+
+
+<script src="/blog/js/html-patch.js" type="text/javascript"></script>
+<script src="/blog/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

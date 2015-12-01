@@ -4,20 +4,28 @@
   <meta charset="utf-8">
   <link rel = "Shortcut Icon" href=/favicon.ico>
   
-  <title>about | 浅雪夕阳</title>
+  <title>postgres_fdw | 浅雪夕阳</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="study">
+  
 
-  <meta name="description" content="title: Hello WorldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask m">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://hinsteny.github.com/blog/about/index.html">
+  <meta name="description" content="postgres_fdw 使用示例
+在进行postgresql 的查询中，如果我们想查询不在当前database中的table的话，可以通过在当前数据库中做一个映射，建立 FOREIGN TABLE ，则就可以查询远端数据库的表了，具体用法如下：
+参考：http://www.postgresql.org/docs/9.3/static/postgres-fdw.html      https://">
+<meta property="og:type" content="article">
+<meta property="og:title" content="postgres_fdw">
+<meta property="og:url" content="http://hinsteny.github.com/blog/2015/07/12/postgres-fdw/index.html">
 <meta property="og:site_name" content="浅雪夕阳">
-<meta property="og:description" content="title: Hello WorldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask m">
-<meta property="og:updated_time" content="2015-12-01T05:52:55.552Z">
+<meta property="og:description" content="postgres_fdw 使用示例
+在进行postgresql 的查询中，如果我们想查询不在当前database中的table的话，可以通过在当前数据库中做一个映射，建立 FOREIGN TABLE ，则就可以查询远端数据库的表了，具体用法如下：
+参考：http://www.postgresql.org/docs/9.3/static/postgres-fdw.html      https://">
+<meta property="og:updated_time" content="2015-12-01T09:48:36.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="title: Hello WorldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask m">
+<meta name="twitter:title" content="postgres_fdw">
+<meta name="twitter:description" content="postgres_fdw 使用示例
+在进行postgresql 的查询中，如果我们想查询不在当前database中的table的话，可以通过在当前数据库中做一个映射，建立 FOREIGN TABLE ，则就可以查询远端数据库的表了，具体用法如下：
+参考：http://www.postgresql.org/docs/9.3/static/postgres-fdw.html      https://">
   
   
     <link rel="icon" href="/favicon.png">
@@ -95,11 +103,11 @@
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><em class="page-title-link" data-url="/blog/about/index.html">about</em></h1>
+              <h1 class="header"><a class="page-title-link" href="/blog/categories/study/">study</a></h1>
             </div>
             <div class="main-body-content">
               
-  <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+  <article id="study-postgres-fdw" class="article article-single article-type-study" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -107,33 +115,41 @@
           
   
     <h1 class="article-title" itemprop="name">
-      about
+      postgres_fdw
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/blog/about/index.html" class="article-date">
-  <time datetime="2015-07-24T13:48:48.000Z" itemprop="datePublished">2015-07-24</time>
+        <a href="/blog/2015/07/12/postgres-fdw/" class="article-date">
+  <time datetime="2015-07-12T12:46:23.000Z" itemprop="datePublished">2015-07-12</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="title:_Hello_World">title: Hello World</h2><p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><strong>postgres_fdw 使用示例</strong></p>
+<p><strong>在进行postgresql 的查询中，如果我们想查询不在当前database中的table的话，可以通过在当前数据库中做一个映射，建立 FOREIGN TABLE ，则就可以查询远端数据库的表了，具体用法如下：</strong></p>
+<p>参考：<a href="http://www.postgresql.org/docs/9.3/static/postgres-fdw.html" target="_blank" rel="external">http://www.postgresql.org/docs/9.3/static/postgres-fdw.html</a><br>      <a href="https://wiki.postgresql.org/wiki/Foreign_data_wrappers" target="_blank" rel="external">https://wiki.postgresql.org/wiki/Foreign_data_wrappers</a></p>
+<p>1.使用超级用户添加扩展(extension )</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTENSION</span> postgres_fdw;</span><br></pre></td></tr></table></figure>
+<p>注：删除命令 <code>DROP EXTENSION postgres_fdw;</code></p>
+<p> 2.创建要访问的远端服务器(foreign server)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">SERVER</span> hisoka_server FOREIGN <span class="keyword">DATA</span> WRAPPER postgres_fdw OPTIONS (host <span class="string">'localhost'</span>, port <span class="string">'5432'</span>, dbname <span class="string">'postgres'</span>);</span></span><br></pre></td></tr></table></figure></p>
+<p>注：删除命令 <code>DROP server hisoka_server;</code></p>
+<p>3.创建对远端服务器访问控制的用户群组<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="keyword">MAPPING</span> <span class="keyword">FOR</span> <span class="keyword">public</span> <span class="keyword">SERVER</span> hisoka_server OPTIONS (<span class="keyword">user</span> <span class="string">'postgres'</span>, <span class="keyword">password</span> <span class="string">'welcome'</span>);</span></span><br></pre></td></tr></table></figure></p>
+<p>注：删除命令 <code>DROP USER MAPPING FOR public SERVER hisoka_server;</code></p>
+<p>4.创建远程数据库表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">CREATE</span> FOREIGN <span class="keyword">TABLE</span> films (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">serial</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    code <span class="built_in">character</span>(<span class="number">5</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	title <span class="built_in">character</span> <span class="built_in">varying</span>(<span class="number">40</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	did <span class="built_in">integer</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	date_prod <span class="built_in">date</span>,</span><br><span class="line">	kind <span class="built_in">character</span> <span class="built_in">varying</span>(<span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">SERVER</span> hisoka_server OPTIONS (schema_name <span class="string">'public'</span>, table_name <span class="string">'films'</span>);</span></span><br></pre></td></tr></table></figure>
+<p>注：删除命令 <code>DROP FOREIGN TABLE films;</code></p>
+<p>5.现在就可以访问或者修改远程数据库中的表了哈</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> films;</span></span><br></pre></td></tr></table></figure>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://hinsteny.github.com/blog/about/index.html" data-id="cihn8typs0006xc8jhh14wazw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="http://hinsteny.github.com/blog/2015/07/12/postgres-fdw/" data-id="cihn8tyq9000cxc8jfi4mce2r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/study/">study</a></li></ul>
+
       </footer>
     </div>
   </article>
@@ -158,6 +174,29 @@
       
     </ul>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2015/08/28/Commond-git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Commond_git
+        
+      </p>
+      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/blog/2015/06/15/Jstl-foreach/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Jstl_foreach</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
   
   <div class="widgets-container">
     
